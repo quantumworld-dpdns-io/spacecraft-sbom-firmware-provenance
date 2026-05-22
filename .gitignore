@@ -13,6 +13,7 @@ build/
 __pycache__/
 *.pyc
 *.class
+*.egg-info/
 
 # Dependencies
 node_modules/
@@ -22,4 +23,31 @@ vendor/
 .env
 .env.*
 !.env.example
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+coverage_html/
+htmlcov/
+.coverage
+coverage.xml
+tests/robot/output/
+
+# Security reports
+bandit-report.json
+semgrep-report.json
+trivy-results.sarif
+
+# Data
+data/
+*.db
+
+# Logs
+*.log
+
+# Docker
+.docker/
+
+# Auto-commit script
 scripts/auto_commit.sh
