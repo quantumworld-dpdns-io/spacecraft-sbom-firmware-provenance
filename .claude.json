@@ -1,0 +1,12 @@
+{
+  "project": "spacecraft-sbom-firmware-provenance",
+  "description": "Spacecraft SBOM and firmware provenance vault",
+  "mcpServers": {
+    "sbom-provenance": {
+      "type": "local",
+      "command": "uvicorn",
+      "args": ["sbom_provenance.main:app", "--host", "0.0.0.0", "--port", "8001"]
+    }
+  },
+  "customInstructions": "This project manages SBOM documents and firmware provenance for spacecraft. Use the MCP tools to query SBOM data, verify firmware, and trace provenance chains."
+}
