@@ -1,0 +1,19 @@
+# Global owners
+* @quantumworld-dpdns-io
+
+# Core source code
+/src/sbom_provenance/ @quantumworld-dpdns-io
+
+# Security configuration
+/requirements/security.txt @quantumworld-dpdns-io
+/.github/workflows/security_*.yml @quantumworld-dpdns-io
+
+# CI/CD pipelines
+/.github/workflows/ @quantumworld-dpdns-io
+
+# Docker configuration
+/docker/ @quantumworld-dpdns-io
+
+# Documentation
+/docs/ @quantumworld-dpdns-io
+/README.md @quantumworld-dpdns-io

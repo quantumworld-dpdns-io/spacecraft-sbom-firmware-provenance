@@ -1,0 +1,8 @@
+-r base.txt
+bandit>=1.7,<2
+safety>=3.0,<4
+semgrep>=1.50,<2
+pip-audit>=2.7,<3
+owasp-zap-v2>=0.0.7,<1
+python-nvd3>=0.3,<1
+talisman>=1.0,<2
