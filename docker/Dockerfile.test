@@ -1,0 +1,17 @@
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY requirements/base.txt requirements/test.txt requirements/security.txt /app/requirements/
+RUN pip install --no-cache-dir -r requirements/base.txt -r requirements/test.txt -r requirements/security.txt
+
+COPY . .
+RUN pip install --no-cache-dir -e .
+
+ENV PYTHONPATH=/app/src:$PYTHONPATH \
+    PYTHONUNBUFFERED=1 \
+    DATABASE_URL=sqlite:///test.db \
+    SECRET_KEY=test-secret-key-not-for-production \
+    ENVIRONMENT=test
+
+CMD ["sh", "-c", "pytest tests/ -v --cov=src --cov-report=term && robot --outputdir tests/robot/output tests/robot/"]
