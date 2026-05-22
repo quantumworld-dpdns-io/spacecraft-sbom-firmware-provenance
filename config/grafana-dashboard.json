@@ -1,0 +1,44 @@
+{
+  "dashboard": {
+    "title": "SBOM Provenance Dashboard",
+    "tags": ["sbom", "firmware", "security"],
+    "timezone": "browser",
+    "panels": [
+      {
+        "title": "API Request Rate",
+        "type": "graph",
+        "targets": [{"expr": "rate(http_requests_total[5m])", "legendFormat": "{{method}} {{path}}"}]
+      },
+      {
+        "title": "Error Rate by Status Code",
+        "type": "graph",
+        "targets": [{"expr": "rate(http_requests_total{status=~\"5..\"}[5m])", "legendFormat": "5xx errors"}]
+      },
+      {
+        "title": "Response Latency (p95)",
+        "type": "graph",
+        "targets": [{"expr": "histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m]))", "legendFormat": "p95 latency"}]
+      },
+      {
+        "title": "SBOM Documents Count",
+        "type": "stat",
+        "targets": [{"expr": "sbom_documents_total"}]
+      },
+      {
+        "title": "Firmware Images Count",
+        "type": "stat",
+        "targets": [{"expr": "firmware_images_total"}]
+      },
+      {
+        "title": "Vulnerabilities by Severity",
+        "type": "piechart",
+        "targets": [{"expr": "sbom_vulnerabilities_by_severity"}]
+      },
+      {
+        "title": "Active Approvals",
+        "type": "stat",
+        "targets": [{"expr": "approval_requests_pending"}]
+      }
+    ]
+  }
+}
