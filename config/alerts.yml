@@ -1,0 +1,38 @@
+groups:
+  - name: sbom_alerts
+    rules:
+      - alert: HighErrorRate
+        expr: rate(http_requests_total{status=~"5.."}[5m]) > 0.05
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "High HTTP error rate ({{ $value }})"
+          description: "API error rate is above 5% for 5 minutes"
+
+      - alert: SlowResponses
+        expr: histogram_quantile(0.95, rate(http_request_duration_seconds_bucket[5m])) > 2
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Slow API responses ({{ $value }}s p95)"
+          description: "95th percentile response time exceeds 2 seconds"
+
+      - alert: DatabaseDown
+        expr: pg_up == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Database is down"
+          description: "PostgreSQL instance is unreachable"
+
+      - alert: HighVulnerabilityCount
+        expr: sbom_vulnerabilities_critical > 10
+        for: 1h
+        labels:
+          severity: critical
+        annotations:
+          summary: "High number of critical vulnerabilities ({{ $value }})"
+          description: "There are more than 10 critical vulnerabilities in the catalog"
