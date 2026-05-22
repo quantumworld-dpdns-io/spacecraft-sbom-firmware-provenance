@@ -1,0 +1,10 @@
+-r base.txt
+robotframework>=7.0,<8
+robotframework-requests>=0.9,<1
+robotframework-seleniumlibrary>=6.1,<7
+robotframework-jsonlibrary>=0.5,<1
+robotframework-faker>=5.0,<1
+pytest>=8.0,<9
+pytest-cov>=4.1,<5
+coverage>=7.4,<8
+factory-boy>=3.3,<4
